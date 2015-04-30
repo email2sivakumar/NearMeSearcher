@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="NearMeSearcher.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" Name="PhoneApplicationPage" Loaded="phoneApplicationPage_OnPageLoaded">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRootGrid" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanelGrid" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="PlacesNearBySearcher" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FFE9F0F2" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanelGrid" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel x:Name="ContentPanelStack" Grid.Row="0" Margin="5,5">
+                <TextBlock x:Name="SearchTextBlock" Height="30" HorizontalAlignment="Center" Margin="5,5" Text="" VerticalAlignment="Top" Width="412" />
+                <TextBox x:Name="SearchTextBox" Height="72" HorizontalAlignment="Center" Margin="5,5" Text="" VerticalAlignment="Top" Width="442" TextAlignment="Center" TextInputUpdate="searchTextBox_OnTextInputUpdate" TextInputStart="searchTextBox_OnTextInputStart" TextInput="searchTextBox_OnTextInput" GotFocus="searchTextBox_OnGotFocus" TextChanged="searchTextBox_OnTextChanged" />
+            </StackPanel>
+        </Grid>
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ResultPanelGrid" Grid.Row="2" Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock x:Name="resultsTextBlock" Height="Auto" HorizontalAlignment="Center" Margin="5,5" VerticalAlignment="Top" Width="412" FontSize="14" />
+                <toolkit:LongListSelector Name="Venues" Height="525" Width="442" IsFlatList="True" Margin="5,5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <toolkit:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="1" Background="Gray">
+                                <TextBlock Text="{Binding Name}" Width="Auto" Height="Auto" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Address}" Width="Auto" Height="Auto" FontStyle="Italic" />
+                                <TextBlock Text="{Binding Distance}" Width="Auto" Height="Auto" FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.ItemTemplate>
+                </toolkit:LongListSelector>
+            </StackPanel>
+        </Grid>
+    </Grid>
+    
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
