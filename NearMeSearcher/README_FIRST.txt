@@ -10,4 +10,4 @@
 
 
 - Tested on MS visual studio 2010 Express for Windows Phone and Emulator comes with that.
-- Technically should run on WP7 and WP8 but have not tested
+- Technically should run on WP7 and WP8 phone but have not tested
